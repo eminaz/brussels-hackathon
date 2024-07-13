@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { Card, Input, Space, Avatar, List, Divider, Flex, Tag } from 'antd';
+import { Card, Input, Space, Avatar, List, Divider, Flex, Tag, Button } from 'antd';
 const { Search } = Input;
 
 function App() {
@@ -41,6 +41,10 @@ function App() {
     setTokens(res.data.items.filter(_token => _token.token.circulating_market_cap && _token.token.circulating_market_cap>10000));
   }
 
+  const onClickButton = () => {
+    console.log('click');
+  }
+
   return (
     <div className="App">
 
@@ -55,6 +59,7 @@ function App() {
         <div className='searBar' >
           <Search placeholder="input search text" onSearch={onSearch} enterButton />
         </div>
+        <Button onClick={onClickButton}>I don't have a wallet</Button>
         {
           address ?
             <Card title={address} bordered={false} className='profile-card'>
